@@ -1,27 +1,31 @@
-var path = require('path');
+const path = require('path'),
+    webpack = require('webpack'),
+    HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: "./src/index.js",
-  module: {
-    rules: [
-      {
-        test: /.ts$/,
-        loader: 'ts-loader'
-      },
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/env']
-          }
-        }
-      }
+    entry: {
+        app: ['./src/App.tsx', 'webpack-hot-middleware/client'],
+        vendor: ['react', 'react-dom']
+    },
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'js/[name].bundle.js'
+    },
+    devtool: 'source-map',
+    resolve: {
+        extensions: ['.js', '.jsx', '.json', '.ts', '.tsx']
+    },
+    module: {
+        rules: [
+            {
+                test: /\.(ts|tsx)$/,
+                loader: 'ts-loader'
+            },
+            { enforce: "pre", test: /\.js$/, loader: "source-map-loader" }
+        ]
+    },
+    plugins: [
+        new HtmlWebpackPlugin({ template: path.resolve(__dirname, 'src', 'index.html') }),
+        new webpack.HotModuleReplacementPlugin()
     ]
-  },
-  output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, './dist'),
-  }
-};
+}

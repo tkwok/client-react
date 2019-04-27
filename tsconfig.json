@@ -8,11 +8,10 @@
     "preserveConstEnums": true,
     "removeComments": true,
     "sourceMap": true,
-    "target": "es5",
-    "lib": ["es2015"],
+    "target": "es6",
     "strict": true,
     "declaration": true
   },
   "include": ["./src/**/**/*"],
-  "exclude": ["node_modules", "**/*.spec.ts"]
+  "exclude": ["node_modules", "src/**/*.test.tsx"]
 }

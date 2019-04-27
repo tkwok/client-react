@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Component, Fragment } from "react";
 
 interface IProps {
   compiler: string;
@@ -6,13 +7,15 @@ interface IProps {
   bundler: string;
 }
 
-export class Hello extends React.Component<IProps, {}> {
+export class Hello extends Component<IProps, {}> {
   render() {
     return (
-      <h1>
-        This is a {this.props.framework} application using {this.props.compiler}{" "}
-        with {this.props.bundler}
-      </h1>
+      <Fragment>
+        <h1>
+          This is a {this.props.framework} application using{" "}
+          {this.props.compiler} with {this.props.bundler}
+        </h1>
+      </Fragment>
     );
   }
 }

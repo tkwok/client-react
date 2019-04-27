@@ -4,6 +4,7 @@
   "description": "Client React App",
   "main": "index.js",
   "scripts": {
+    "storybook": "start-storybook",
     "dev": "./node_modules/.bin/webpack-dev-server --config ./webpack.dev.config.js",
     "build": "./node_modules/.bin/webpack"
   },
@@ -22,6 +23,7 @@
     "@babel/core": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
     "@babel/preset-react": "^7.0.0",
+    "@storybook/react": "^5.0.10",
     "@typescript-eslint/eslint-plugin": "^1.7.0",
     "@typescript-eslint/parser": "^1.7.0",
     "babel-loader": "^8.0.5",

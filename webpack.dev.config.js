@@ -2,12 +2,13 @@ const path = require("path"),
   HtmlWebpackPlugin = require("html-webpack-plugin"),
   CleanWebpackPlugin = require("clean-webpack-plugin"),
   MiniCssExtractPlugin = require("mini-css-extract-plugin"),
-  devMode = true; 
+  devMode = process.env.NODE_ENV === 'development'; 
 
 module.exports = {
   mode: "development",
   entry: {
-    app: ["./src/App.tsx", "./src/styles.css"]
+    app: "./src/App.tsx",
+    style: "./src/styles.scss"
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -40,16 +41,18 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.(sa|sc|c)ss$/,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              hmr: devMode
-            }
+              hmr: devMode,
+            },
           },
-          "css-loader"
-        ]
+          'css-loader',
+          'postcss-loader',
+          'sass-loader',
+        ],
       },
       { test: /\.hbs$/, loader: "handlebars-loader" },
       {

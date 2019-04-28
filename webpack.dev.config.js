@@ -1,11 +1,13 @@
 const path = require("path"),
   HtmlWebpackPlugin = require("html-webpack-plugin"),
-  CleanWebpackPlugin = require("clean-webpack-plugin");
+  CleanWebpackPlugin = require("clean-webpack-plugin"),
+  MiniCssExtractPlugin = require("mini-css-extract-plugin"),
+  devMode = true; 
 
 module.exports = {
   mode: "development",
   entry: {
-    app: ["./src/App.tsx"]
+    app: ["./src/App.tsx", "./src/styles.css"]
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -13,6 +15,7 @@ module.exports = {
     chunkFilename: "js/[name].bundle.js"
   },
   optimization: {
+    noEmitOnErrors: true,
     splitChunks: {
       cacheGroups: {
         commons: {
@@ -25,16 +28,33 @@ module.exports = {
   },
   devtool: "inline-source-map",
   devServer: {
-    contentBase: "./dist"
+    contentBase: path.join(__dirname, "dist"),
+    compress: true,
+    port: 9000,
+    watchContentBase: true,
+    progress: true
   },
   resolve: {
     extensions: [".js", ".jsx", ".json", ".ts", ".tsx"]
   },
   module: {
     rules: [
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: devMode
+            }
+          },
+          "css-loader"
+        ]
+      },
       { test: /\.hbs$/, loader: "handlebars-loader" },
       {
         test: /\.(ts|tsx)$/,
+        exclude: /(node_modules)/,
         loader: "awesome-typescript-loader"
       },
       { enforce: "pre", test: /\.js$/, loader: "source-map-loader" }
@@ -48,6 +68,10 @@ module.exports = {
       title: "WIP",
       inject: "body",
       description: "Something good"
+    }),
+    new MiniCssExtractPlugin({
+      filename: devMode ? "[name].css" : "[name].[hash].css",
+      chunkFilename: devMode ? "[id].css" : "[id].[hash].css"
     })
   ]
 };

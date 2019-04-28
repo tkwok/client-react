@@ -6,5 +6,9 @@ module.exports = {
     "plugin:prettier/recommended"
   ],
   plugins: ["@typescript-eslint", "react"],
+  parserOptions: {
+    ecmaVersion: 2018,
+    sourceType: "module"
+  },
   rules: {}
 };

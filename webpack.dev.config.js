@@ -1,6 +1,6 @@
 const path = require("path"),
-  webpack = require("webpack"),
-  HtmlWebpackPlugin = require("html-webpack-plugin");
+  HtmlWebpackPlugin = require("html-webpack-plugin"),
+  CleanWebpackPlugin = require("clean-webpack-plugin");
 
 module.exports = {
   mode: "development",
@@ -10,7 +10,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "js/[name].bundle.js",
-    chunkFilename: 'js/[name].bundle.js',
+    chunkFilename: "js/[name].bundle.js"
   },
   optimization: {
     splitChunks: {
@@ -23,7 +23,10 @@ module.exports = {
       }
     }
   },
-  devtool: "source-map",
+  devtool: "inline-source-map",
+  devServer: {
+    contentBase: "./dist"
+  },
   resolve: {
     extensions: [".js", ".jsx", ".json", ".ts", ".tsx"]
   },
@@ -38,6 +41,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "src", "index-template.hbs"),
       filename: "index.html",

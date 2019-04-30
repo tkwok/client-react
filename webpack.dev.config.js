@@ -8,7 +8,7 @@ module.exports = {
   mode: "development",
   entry: {
     app: "./src/App.tsx",
-    style: "./src/styles.scss"
+    style: "./src/asset/css/main.scss"
   },
   output: {
     path: path.resolve(__dirname, "dist"),

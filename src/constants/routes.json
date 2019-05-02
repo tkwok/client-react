@@ -1,0 +1,8 @@
+[
+    {
+        "title": "Home Page",
+        "path": "/",
+        "component": "Home",
+        "exact": true
+    }
+]

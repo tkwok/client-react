@@ -7,7 +7,7 @@ const path = require("path"),
 module.exports = {
   mode: "development",
   entry: {
-    app: "./src/App.tsx",
+    app: "./src/index.tsx",
     style: "./src/asset/css/main.scss"
   },
   output: {
@@ -30,6 +30,8 @@ module.exports = {
   devtool: "inline-source-map",
   devServer: {
     contentBase: path.join(__dirname, "dist"),
+    inline: true,
+    hot: true,
     compress: true,
     port: 9000,
     watchContentBase: true,

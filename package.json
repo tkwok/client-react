@@ -3,11 +3,16 @@
   "version": "0.0.1",
   "description": "Client React App",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tkwok/client-react.git"
+  },
   "scripts": {
     "storybook": "start-storybook",
-    "dev": "./node_modules/.bin/webpack-dev-server --open --hot --config ./webpack.dev.config.js",
+    "dev": "./node_modules/.bin/webpack-dev-server --open --config ./webpack.dev.config.js",
     "build": "./node_modules/.bin/webpack --mode production --config ./webpack.prod.config.js",
-    "test": "jest --config=jest.config.js"
+    "test": "jest --config=jest.config.js",
+    "check-types": "tsc"
   },
   "author": "Tony Kwok",
   "license": "ISC",
@@ -18,6 +23,7 @@
     "handlebars-loader": "^1.7.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.0",
     "webpack": "^4.30.0",
     "webpack-dev-server": "^3.3.1"
   },
@@ -31,6 +37,7 @@
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/jest": "^24.0.11",
     "@types/node": "^11.13.8",
+    "@types/react-router-dom": "^4.3.2",
     "@typescript-eslint/eslint-plugin": "^1.7.0",
     "@typescript-eslint/parser": "^1.7.0",
     "autoprefixer": "^9.5.1",

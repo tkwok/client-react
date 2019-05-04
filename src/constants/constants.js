@@ -1,3 +1,3 @@
-import { Home } from "../components/views";
+import Home from "../components/views";
 
 export const VIEWS_COLLECTION = { Home };

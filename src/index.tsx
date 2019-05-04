@@ -1,15 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route } from "react-router-dom";
-
 import { App } from "./components";
-import { Home } from "./components/views";
 
+import { VIEWS_COLLECTION } from "./constants/constants";
 import routesData from "./constants/routes.json";
-
-const componentRegistry: Object = {
-  'Home': Home
-};
 
 const Routes =
     routesData ?
@@ -19,7 +14,7 @@ const Routes =
                     key={index}
                     exact={route.exact}
                     path={route.path}
-                    component={componentRegistry[route.component]} />
+                    component={VIEWS_COLLECTION[route.component]} />
             );
         })
     : null;
@@ -30,5 +25,4 @@ ReactDOM.render(
       { Routes }
     </App>
   </BrowserRouter>,
-  document.getElementById('root')
-);
+document.getElementById('root'));

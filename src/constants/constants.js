@@ -1,3 +1,3 @@
 import { Home } from "../components/views";
 
-export const COMPONENT_REGISTRY = { Home };
+export const VIEWS_COLLECTION = { Home };

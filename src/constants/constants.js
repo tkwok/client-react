@@ -1,3 +1,4 @@
-import Home from "../components/views";
+import { Home } from "../components/views";
+const VIEWS_COLLECTION = { Home };
 
-export const VIEWS_COLLECTION = { Home };
+export default VIEWS_COLLECTION;

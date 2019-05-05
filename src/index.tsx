@@ -3,18 +3,24 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Route } from "react-router-dom";
 import { App } from "./components";
 
-import { VIEWS_COLLECTION } from "./constants/constants";
+import VIEWS_COLLECTION from "./constants/constants";
 import routesData from "./constants/routes.json";
+
+const RouteComposition = ({ component: Component, ...rest }) => (
+  <Route {...rest} render={props => (
+      <Component {...props}/>
+  )}/>
+)
 
 const Routes =
     routesData ?
         routesData.map((route, index) => {
             return (
-                <Route
+                <RouteComposition
                     key={index}
                     exact={route.exact}
-                    path={route.path}
-                    component={VIEWS_COLLECTION[route.component]} />
+                    path={route.path} 
+                    component={ VIEWS_COLLECTION[route.component] }/>
             );
         })
     : null;

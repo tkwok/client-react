@@ -8,9 +8,9 @@ import routesData from "./constants/routes.json";
 
 const RouteComposition = ({ component: Component, ...rest }) => (
   <Route {...rest} render={props => (
-      <Component {...props}/>
+      <Component {...props} />
   )}/>
-)
+);
 
 const Routes =
     routesData ?
@@ -19,7 +19,9 @@ const Routes =
                 <RouteComposition
                     key={index}
                     exact={route.exact}
-                    path={route.path} 
+                    path={route.path}
+                    title={route.title}
+                    description={route.description}
                     component={ VIEWS_COLLECTION[route.component] }/>
             );
         })

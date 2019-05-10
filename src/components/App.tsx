@@ -1,5 +1,9 @@
-import * as React from "react";
-import { Fragment } from "react";
+import React, { Fragment } from "react";
+import { createStore, applyMiddleware } from "redux";
+import { Provider } from "react-redux";
+import reduxThunk from "redux-thunk";
+
+import reducers from "../reducers";
 
 import { Helmet } from "react-helmet";
 
@@ -11,15 +15,23 @@ interface IProps {
 }
 
 export default function App ({ children, title, description, path }: IProps) {
+    const store = createStore(
+        reducers, { 
+            auth: { authenticated: localStorage.getItem('user') } as any 
+        }, applyMiddleware(reduxThunk)  
+    );
+
     return (
-        <Fragment>
-            <Helmet>
-                <meta charSet="utf-8" />
-                <title>{ title }</title>
-                <meta name="description" content={ description } />
-                <link rel="canonical" href={ path } />
-            </Helmet>
-            { children }
-        </Fragment>
+        <Provider store={store}>
+            <Fragment>
+                <Helmet>
+                    <meta charSet="utf-8" />
+                    <title>{ title }</title>
+                    <meta name="description" content={ description } />
+                    <link rel="canonical" href={ path } />
+                </Helmet>
+                { children }
+            </Fragment>
+        </Provider>
     );
 }

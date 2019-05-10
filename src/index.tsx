@@ -12,7 +12,7 @@ const RouteComposition = ({ component: Component, ...rest }) => (
   )}/>
 );
 
-const Routes =
+const Routes =  
     routesData ?
         routesData.map((route, index) => {
             return (

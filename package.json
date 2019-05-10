@@ -19,6 +19,7 @@
   "dependencies": {
     "@types/react": "^16.8.14",
     "@types/react-dom": "^16.8.4",
+    "@types/react-helmet": "^5.0.8",
     "@types/react-test-renderer": "^16.8.1",
     "handlebars-loader": "^1.7.1",
     "react": "^16.8.6",

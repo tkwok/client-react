@@ -1,7 +1,11 @@
-import React from "react";
+import React, { Fragment } from "react";
+import { Header } from "../common";
 
 export default function Home () {
     return(
-        <h1>Home Page View</h1>
+        <Fragment>
+            <Header />
+            <h1>Home Page View</h1>
+        </Fragment>
     );
 }

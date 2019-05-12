@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, ReactNode } from "react";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import reduxThunk from "redux-thunk";
@@ -8,7 +8,7 @@ import reducers from "../reducers";
 import { Helmet } from "react-helmet";
 
 interface IProps {
-    children?: React.ReactNode,
+    children?: ReactNode,
     title?: string,
     description?: string,
     path?: string

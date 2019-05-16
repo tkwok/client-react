@@ -25,13 +25,7 @@ interface IState {
 };
 
 class Header extends PureComponent<IProps, IState> {
-    constructor(props) {
-        super(props);
-    
-        this.state = {
-          isOpen: false
-        };
-    }
+    state = { isOpen: false };
 
     toggle = () => {
         this.setState({

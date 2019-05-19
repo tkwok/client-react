@@ -62,6 +62,21 @@ module.exports = {
         exclude: /(node_modules)/,
         loader: "awesome-typescript-loader"
       },
+      {
+        test: /\.(jpe?g|png|gif)$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10 * 1024
+        }
+      },
+      {
+        test: /\.(jpg|png|gif|svg)$/,
+        loader: "image-webpack-loader",
+        options: {
+          bypassOnDebug: devMode
+        },
+        enforce: "pre"
+      },
       { enforce: "pre", test: /\.js$/, loader: "source-map-loader" }
     ]
   },

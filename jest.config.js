@@ -8,5 +8,5 @@ module.exports = {
     testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
     moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
     snapshotSerializers: ["enzyme-to-json/serializer"],
-    setupTestFrameworkScriptFile: "<rootDir>/src/config/setupTests.ts",
+    setupFilesAfterEnv: ["<rootDir>/src/config/setupTests.ts"],
 };

@@ -4,6 +4,8 @@
 
 ### Tech Stack
 
-React 16.8, Redux, React Router, TypeScript, ESLint, Jest, Enzyme, Webpack, Babel, Storybook
+React 16.8, Redux, React Router, TypeScript, ESLint, Jest, Enzyme, Webpack, Storybook
+
+Webpack - babel, template, liveview, image minification, PostCSS, Sass
 
 

@@ -7,6 +7,6 @@ module.exports = {
     setupFiles: ["raf/polyfill"],
     testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
     moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
-    setupFilesAfterEnv: ["<rootDir>/src/config/setupTests.ts"],
     snapshotSerializers: ["enzyme-to-json/serializer"],
+    setupTestFrameworkScriptFile: "<rootDir>/src/config/setupTests.ts",
 };

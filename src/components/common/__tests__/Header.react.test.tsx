@@ -15,7 +15,10 @@ const store = createStore(
 
 describe("header component", () => {
     test("header renders properly", () => {
-        const wrapper = shallow<typeof Header>(<Provider store={store}><Header></Header></Provider>);
+        const wrapper = shallow<typeof Header>(
+            <Provider store={store}>
+                <Header></Header>
+            </Provider>);
         expect(wrapper.exists()).toBe(true);
     });
 });

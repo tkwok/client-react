@@ -22,4 +22,5 @@ interface AuthUserAction {
     payload: AuthPayload
 };
 
-export type Types = AuthUserAction;
+export type AuthUserType = AuthUserAction;
+export type AuthType = AuthPayload;

@@ -1,34 +1,24 @@
-import React, { Component } from 'react';
+import React, { useEffect, Component } from 'react';
 import { connect } from 'react-redux';
+import { AuthType } from '../actions/types';
+import { RootReducerType } from "../reducers";
 
 interface IProps {
-    auth: object;
+    auth: AuthType;
     history: any;
-  }
+}
 
-export default (ChildComponent: any) => {
-    class ComposedComponent extends Component<IProps> {
+export default (ChildComponent: typeof Component ) => {
 
-        // our component just got rendered
-        componentDidMount() {
-            this.shouldNavigateAway();
-        }
+    const ComposedComponent = (props: IProps) => {
+        useEffect(() => {
+            (!props.auth) ? props.history.push('/') : null;
+        });
 
-        // anytime component receive new props
-        componentDidUpdate() {
-            this.shouldNavigateAway();
-        }
-
-        shouldNavigateAway() {
-            (!this.props.auth) ? this.props.history.push('/') : null;
-        }
-
-        render() {
-            return <ChildComponent {...this.props} />;
-        }
+        return <ChildComponent {...props} />;        
     }
 
-    function mapStateToProps (state) {
+    function mapStateToProps (state: RootReducerType) {
         return { auth: state.auth.authenticated };
     }
 

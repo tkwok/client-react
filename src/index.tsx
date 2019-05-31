@@ -5,6 +5,7 @@ import { App } from "./components";
 
 import VIEWS_COLLECTION from "./constants/constants";
 import routesData from "./constants/routes.json";
+import * as serviceworker from './serviceworker/index';
 
 const RouteComposition = ({ component: Component, ...rest }) => (
   <Route {...rest} render={props => (
@@ -34,3 +35,5 @@ ReactDOM.render(
     </App>
   </BrowserRouter>,
 document.getElementById('root'));
+
+serviceworker.register();

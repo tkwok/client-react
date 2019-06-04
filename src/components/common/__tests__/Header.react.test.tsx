@@ -14,7 +14,7 @@ const store = createStore(
 );
 
 describe("header component", () => {
-    test("header renders properly", () => {
+    test("header renders properly on screen", () => {
         const wrapper = shallow<typeof Header>(
             <Provider store={store}>
                 <Header></Header>

@@ -4,6 +4,8 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import reduxThunk from "redux-thunk";
 
+import { Button } from "reactstrap";
+
 import Header from "../Header";
 import reducers from "../../../reducers";
 
@@ -14,11 +16,21 @@ const store = createStore(
 );
 
 describe("header component", () => {
+    const wrapper = shallow<typeof Header>(
+        <Provider store={store}>
+            <Header></Header>
+        </Provider>);
+
     test("header renders properly on screen", () => {
-        const wrapper = shallow<typeof Header>(
-            <Provider store={store}>
-                <Header></Header>
-            </Provider>);
         expect(wrapper.exists()).toBe(true);
     });
+
+    test("header should show sign up link", () => {
+        // const wrapper = mount<typeof Header>(
+        //     <Provider store={store}>
+        //         <Header></Header>
+        //     </Provider>);
+        expect(wrapper.children(Button).length).toEqual(1);
+    });
+    
 });

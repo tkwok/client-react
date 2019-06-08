@@ -18,6 +18,12 @@ export default (ChildComponent: typeof Component ) => {
         return <ChildComponent {...props} />;        
     }
 
+    /**
+     * mapStateToProps
+     * 
+     * @param {RootReducerType} state 
+     * @returns 
+     */
     function mapStateToProps (state: RootReducerType) {
         return { auth: state.auth.authenticated };
     }

@@ -8,10 +8,10 @@ import reducers from "../reducers";
 import { Helmet } from "react-helmet";
 
 interface IProps {
-    children?: ReactNode,
-    title?: string,
-    description?: string,
-    path?: string
+    children: ReactNode,
+    title: string,
+    description: string,
+    path: string
 }
 
 export default function App ({ children, title, description, path }: IProps) {

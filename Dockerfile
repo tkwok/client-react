@@ -1,6 +1,10 @@
 FROM node:latest
-EXPOSE 8080
-WORKDIR /bindmount
-COPY package-lock.json package.json ./
+
+WORKDIR /app
+ENV PATH /app/node_modules/.bin:$PATH
+COPY package-lock.json /app/package.json
+
 RUN npm install --no-progress --ignore-optional
-CMD npm run start:dev     # webpack-dev-server --host 0.0.0.0 --hot
+RUN npm install react-scripts@3.0.1 -g --silent
+
+CMD ["npm", "start:dev"]

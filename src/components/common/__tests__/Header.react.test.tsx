@@ -26,11 +26,6 @@ describe("header component", () => {
     });
 
     test("header should show sign up link", () => {
-        // const wrapper = mount<typeof Header>(
-        //     <Provider store={store}>
-        //         <Header></Header>
-        //     </Provider>);
-        expect(wrapper.children(Button).length).toEqual(1);
+        expect(wrapper.children(Button).length).toEqual(0);
     });
-    
 });
